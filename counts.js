@@ -1,9 +1,7 @@
 module.exports = function Counts (Model) {
   'use strict';
 
-  Model.afterRemote('findById', injectCounts);
-  Model.afterRemote('findOne', injectCounts);
-  Model.afterRemote('find', injectCounts);
+  Model.afterRemote('**', injectCounts);
 
   function injectCounts (ctx, unused, next) {
     var resources = ctx.result;
